@@ -1,0 +1,67 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=7.0.0",
+        "botman/driver-facebook": "^1.5",
+        "botman/driver-slack": "^2.0",
+        "botman/driver-web": "^1.3",
+        "fideloper/proxy": "~3.3",
+        "jaybizzle/laravel-crawler-detect": "1.*",
+        "jenssegers/mongodb": "^3.3",
+        "laravel/framework": "5.5.*",
+        "laravel/tinker": "~1.0",
+        "nlp-tools/nlp-tools": "1.0.*@dev",
+        "php-ai/php-ml": "^0.5.0",
+        "symfony/dom-crawler": "^4.0",
+        "yooper/php-text-analysis": "^1.2",
+        "zumba/json-serializer": "^2.1"
+    },
+    "require-dev": {
+        "filp/whoops": "~2.0",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "~1.0",
+        "phpunit/phpunit": "~6.0",
+        "symfony/thanks": "^1.0"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+            ]
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
